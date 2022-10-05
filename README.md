@@ -1,5 +1,7 @@
 # frontend-test
 
+Mobile view triggers when display width is <375px via media query
+
 ## Project setup
 ```
 npm install

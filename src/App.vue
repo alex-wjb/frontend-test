@@ -17,23 +17,44 @@
           <MDBInput
             name="loanAmount"
             class="amountInput"
-            type="text"
+            type="number"
             inputGroup
+            v-model="loanAmount"
           >
             <template #prepend>
               <span class="input-group-text inputPoundSymbol">£</span>
             </template>
           </MDBInput>
+          <p class="errorMsg" v-if="loanReqErr">Please enter a loan amount</p>
 
           <label class="inputLabel btnGroupLabel" for="monthSelection"
             >Loan term (months)</label
           >
           <div name="monthSelection" class="monthBtnGroup">
-            <MDBBtn class="monthBtn" color="secondary">12</MDBBtn>
-            <MDBBtn class="monthBtn" color="secondary">18</MDBBtn>
-            <MDBBtn class="monthBtn" color="secondary">24</MDBBtn>
+            <MDBBtn
+              class="monthBtn"
+              :class="{ active: loanTerm == 12 }"
+              color="secondary"
+              @click="setLoanTerm(12)"
+              >12</MDBBtn
+            >
+            <MDBBtn
+              class="monthBtn"
+              color="secondary"
+              :class="{ active: loanTerm == 18 }"
+              @click="setLoanTerm(18)"
+              >18</MDBBtn
+            >
+            <MDBBtn
+              class="monthBtn"
+              color="secondary"
+              :class="{ active: loanTerm == 24 }"
+              @click="setLoanTerm(24)"
+              >24</MDBBtn
+            >
           </div>
-          <MDBBtn class="submitBtn"> Submit </MDBBtn>
+          <p class="errorMsg" v-if="termReqErr">Please select a loan term</p>
+          <MDBBtn class="submitBtn" @click="submitData"> Submit </MDBBtn>
         </form>
       </div>
     </div>
@@ -42,11 +63,58 @@
 
 <script>
 import { MDBInput, MDBBtn } from "mdb-vue-ui-kit";
+import { ref } from "vue";
 export default {
   name: "App",
   components: {
     MDBInput,
     MDBBtn,
+  },
+  setup() {
+    const loanAmount = ref(null);
+    const loanTerm = ref(null);
+    const loanReqErr = ref(false);
+    const termReqErr = ref(false);
+
+    //returns true if required inputs are empty
+    const checkRequired = () => {
+      loanReqErr.value = false;
+      termReqErr.value = false;
+      let required = false;
+      if (loanAmount.value == null || loanAmount.value == "") {
+        loanReqErr.value = true;
+        required = true;
+      }
+      if (loanTerm.value == null) {
+        termReqErr.value = true;
+        required = true;
+      }
+      return required;
+    };
+    //replace with code to send to backend via POST etc.
+    const submitData = () => {
+      if (checkRequired()) return;
+      alert(
+        "You have selected a loan of £" +
+          loanAmount.value +
+          " for " +
+          loanTerm.value +
+          " months."
+      );
+    };
+
+    const setLoanTerm = (n) => {
+      loanTerm.value = n;
+    };
+    return {
+      loanAmount,
+      checkRequired,
+      loanReqErr,
+      loanTerm,
+      setLoanTerm,
+      termReqErr,
+      submitData,
+    };
   },
 };
 </script>
@@ -149,6 +217,12 @@ export default {
   color: #ffffff;
 }
 
+.errorMsg {
+  margin-top: 5px;
+  color: #ef5350;
+  font: normal normal normal 26px/32px Montserrat;
+}
+
 @media (max-width: 375px) {
   .viewContainer {
     height: 851px;
@@ -227,6 +301,12 @@ export default {
   .monthBtnGroup {
     display: block;
     margin: 0 auto;
+  }
+
+  .errorMsg {
+    margin-top: 5px;
+    color: #ef5350;
+    font: normal normal normal 18px/22px Montserrat;
   }
 }
 </style>
