@@ -95,8 +95,9 @@ export default {
   vertical-align: text-bottom;
 }
 .amountInput {
-  height: 78px;
-  margin-bottom: 50px;
+  height: 78px !important;
+  margin: 0px !important;
+  font: normal normal normal 35px/43px Montserrat;
 }
 .inputPoundSymbol {
   height: 78px;
@@ -146,5 +147,86 @@ export default {
   left: 57px;
   position: relative;
   color: #ffffff;
+}
+
+@media (max-width: 375px) {
+  .viewContainer {
+    height: 851px;
+    display: block;
+    width: 375px;
+  }
+  .logoBanner {
+    display: block;
+    width: 100%;
+    height: 51px;
+  }
+  .logoPlaceholder {
+    font: normal normal 900 22px/27px Montserrat;
+    top: 12px;
+    left: 18px;
+  }
+
+  .mainSection {
+    width: 375px;
+    display: block;
+  }
+  .formContainer {
+    display: block;
+    width: 339px;
+    margin: auto !important;
+    margin-top: 36px !important;
+  }
+  .formTitle {
+    font: normal normal bold 43px/53px Montserrat;
+    width: 338px;
+    height: 106px;
+    margin: 0 auto;
+    margin-bottom: 27px;
+  }
+  .thumbImg {
+    display: inline-block;
+    width: 45px;
+    height: 51px;
+    vertical-align: text-bottom;
+  }
+  .amountInput {
+    height: 60px;
+    margin-bottom: 50px;
+  }
+  .inputPoundSymbol {
+    height: 80px;
+    border: none;
+    font: normal normal bold 35px/43px Montserrat;
+  }
+
+  .inputLabel {
+    font: normal normal normal 18px/22px Montserrat;
+    margin-bottom: 12px;
+  }
+  .btnGroupLabel {
+    margin-top: 50px;
+  }
+
+  .submitBtn {
+    display: block;
+    font: normal normal bold 22px/27px Montserrat;
+    width: 339px;
+    height: 60px;
+    margin-top: 40px !important;
+    margin: 0 auto;
+  }
+
+  .monthBtn {
+    display: block;
+    width: 338px;
+    height: 60px;
+    font: normal normal normal 25px/30px Montserrat;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .monthBtnGroup {
+    display: block;
+    margin: 0 auto;
+  }
 }
 </style>
