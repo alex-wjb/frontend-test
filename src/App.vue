@@ -26,10 +26,10 @@
             </template>
           </MDBInput>
           <p class="errorMsg" v-if="loanReqErr">Please enter a loan amount</p>
-
           <label class="inputLabel btnGroupLabel" for="monthSelection"
             >Loan term (months)</label
           >
+
           <div name="monthSelection" class="monthBtnGroup">
             <MDBBtn
               class="monthBtn"
@@ -125,25 +125,28 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 100%;
 }
 
 .viewContainer {
-  height: 1080px;
+  width: 100%;
+  height: 100%;
+  /* removes whitespace from inline block elements */
   display: flex;
 }
 .logoBanner {
   display: inline-block;
-  width: 356px;
+  width: 20%;
+  min-height: 100vh;
+  min-width: 200px;
   background: transparent linear-gradient(162deg, #3718b2 0%, #cd33a4 100%) 0%
     0% no-repeat padding-box;
-  height: 100%;
   vertical-align: top;
   flex-shrink: 0;
 }
 .mainSection {
   display: inline-block;
-  height: 100%;
-  width: 1564px;
+  width: 80%;
   flex-shrink: 0;
 }
 .formContainer {
@@ -173,12 +176,23 @@ export default {
   font: normal normal bold 35px/43px Montserrat;
 }
 .monthBtn {
-  width: 250px;
-  height: 77px;
+  height: 70px;
+  margin-left: 15px;
+  min-width: 250px;
+  margin-right: -4px;
+  display: inline-block;
   font: normal normal normal 25px/30px Montserrat;
   background: #f2f2f2 0% 0% no-repeat padding-box;
   border: 1px solid #cbcbcb;
   color: #2c2c2c;
+  margin-bottom: 20px !important;
+}
+.monthBtnGroup button:first-child {
+  margin-left: 0px;
+}
+.monthBtnGroup {
+  width: 100%;
+  text-align: center;
 }
 .inputLabel {
   font: normal normal normal 26px/32px Montserrat;
@@ -187,9 +201,11 @@ export default {
 }
 .btnGroupLabel {
   margin-top: 50px;
+  display: block;
 }
 
 .submitBtn {
+  display: block;
   background: #7600ff 0% 0% no-repeat padding-box;
   border-radius: 5px;
   opacity: 1;
@@ -197,18 +213,14 @@ export default {
   color: #ffffff;
   width: 780px;
   height: 77px;
-  margin-top: 50px;
+  margin: auto;
+  margin-top: 70px;
   text-transform: unset !important;
 }
 .submitBtn:hover {
   color: lightgrey !important;
 }
-.monthBtnGroup {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7.5px;
-}
+
 .logoPlaceholder {
   font: normal normal 900 38px/47px Montserrat;
   top: 44px;
@@ -223,16 +235,48 @@ export default {
   font: normal normal normal 26px/32px Montserrat;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 1100px) {
+  .formContainer {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+  .monthBtn {
+    height: 70px;
+    min-width: 338px;
+    margin: 0 auto;
+
+    display: block;
+  }
+  .formTitle {
+    width: 1000px;
+  }
+  .monthBtnGroup button:first-child {
+    margin: 0 auto;
+  }
+  .monthBtnGroup {
+    width: 100%;
+    text-align: left;
+  }
+  .submitBtn {
+    width: 338px;
+  }
+  .thumbImg {
+    width: 45px;
+    height: 51px;
+  }
+}
+@media (max-width: 700px) {
   .viewContainer {
     height: 851px;
     display: block;
-    width: 375px;
+    width: 100%;
   }
   .logoBanner {
     display: block;
     width: 100%;
     height: 51px;
+    min-height: 51px;
   }
   .logoPlaceholder {
     font: normal normal 900 22px/27px Montserrat;
@@ -241,7 +285,7 @@ export default {
   }
 
   .mainSection {
-    width: 375px;
+    width: 100%;
     display: block;
   }
   .formContainer {
@@ -290,17 +334,22 @@ export default {
     margin: 0 auto;
   }
 
+  .monthBtnGroup button:first-child {
+    margin-left: 0;
+  }
   .monthBtn {
     display: block;
     width: 338px;
     height: 60px;
     font: normal normal normal 25px/30px Montserrat;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
   }
+
   .monthBtnGroup {
+    text-align: left;
     display: block;
     margin: 0 auto;
+    width: 100%;
   }
 
   .errorMsg {
