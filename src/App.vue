@@ -135,24 +135,25 @@ export default {
   display: flex;
 }
 .logoBanner {
-  display: inline-block;
-  width: 20%;
   min-height: 100vh;
-  min-width: 200px;
   background: transparent linear-gradient(162deg, #3718b2 0%, #cd33a4 100%) 0%
     0% no-repeat padding-box;
   vertical-align: top;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 200px;
+  max-width: 356px;
+  flex-grow: 1;
 }
 .mainSection {
-  display: inline-block;
-  width: 80%;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+  flex-grow: 1;
 }
 .formContainer {
+  display: block;
   width: 780px;
   margin: 0 auto;
   margin-top: 296px;
+  padding-bottom: 279px;
 }
 .formTitle {
   font: normal normal bold 44px/54px Montserrat;
@@ -240,16 +241,19 @@ export default {
     width: 500px;
     margin: 0 auto;
     margin-top: 150px;
+    padding-bottom: 150px;
+  }
+  .logoBanner {
+    max-width: 200px;
   }
   .monthBtn {
     height: 70px;
     min-width: 338px;
     margin: 0 auto;
-
     display: block;
   }
   .formTitle {
-    width: 1000px;
+    width: 110%;
   }
   .monthBtnGroup button:first-child {
     margin: 0 auto;
@@ -266,33 +270,34 @@ export default {
     height: 51px;
   }
 }
-@media (max-width: 700px) {
+
+@media (max-width: 850px) {
   .viewContainer {
-    height: 851px;
-    display: block;
-    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
   .logoBanner {
-    display: block;
     width: 100%;
-    height: 51px;
     min-height: 51px;
+    max-width: none;
   }
   .logoPlaceholder {
     font: normal normal 900 22px/27px Montserrat;
     top: 12px;
     left: 18px;
+    width: fit-content;
   }
 
   .mainSection {
     width: 100%;
-    display: block;
   }
   .formContainer {
     display: block;
     width: 339px;
     margin: auto !important;
     margin-top: 36px !important;
+    padding-bottom: 139px;
   }
   .formTitle {
     font: normal normal bold 43px/53px Montserrat;
